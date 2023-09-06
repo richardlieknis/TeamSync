@@ -45,11 +45,20 @@ body {
 }
 
 .ql-toolbar.ql-snow {
-  background: rgb(165, 165, 165);
+  background: rgba(165, 165, 165, 0);
 }
 
+// .ql-stroke {
+//   stroke: #ccc !important;
+// }
+
+// .ql-fill {
+//   fill: #ccc !important;
+// }
+
 .ql-editor.ql-blank::before {
-  font-size: 20px;
+  font-size: 15px;
+  color: #fff5 !important;
 }
 
 #emoji-palette {

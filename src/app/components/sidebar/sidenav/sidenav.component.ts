@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DialogAddChannelComponent } from '../dialog-add-channel/dialog-add-channel.component';
+import { DialogAddChannelComponent } from '../../dialogs/dialog-add-channel/dialog-add-channel.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Channel } from 'src/models/channel.class';
 import { ChannelService } from 'src/app/shared/services/channel.service';

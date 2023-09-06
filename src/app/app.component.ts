@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Slacky';
+  title = 'TeamSync';
 
   constructor(private fireAuth: AngularFireAuth) {}
 

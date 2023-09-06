@@ -1,3 +1,3 @@
-# SlackCloneAngular
+# TeamSync *Slack clone coded in Angular 15.2*
 The work is in progress...
-Come back later for updates =)
+Come back later for updates.

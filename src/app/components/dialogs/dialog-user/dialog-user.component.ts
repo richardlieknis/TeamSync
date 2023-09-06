@@ -4,11 +4,11 @@ import { DialogUserEditComponent } from '../dialog-user-edit/dialog-user-edit.co
 import { DialogPictureEditComponent } from '../dialog-picture-edit/dialog-picture-edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { SidenavService } from './../../shared/services/sidenav.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Subscription } from 'rxjs';
+import { SidenavService } from 'src/app/shared/services/sidenav.service';
 
 
 @Component({
