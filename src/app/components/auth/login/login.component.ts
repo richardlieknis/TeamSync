@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
    */
   guestLogin() {
     this.authService.signIn(
-      'guest@user.de',
-      'guest1'
+      'guest@teamsync.com',
+      'qwertz123'
     ).subscribe({
       next: () => {
         this.router.navigate(['dashboard'])

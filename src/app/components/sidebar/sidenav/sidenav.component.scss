@@ -25,9 +25,19 @@
     width: 30px;
     animation: spin 8s infinite;
   }
-
-  span {
-    font-family: "os-ebold";
+  .name-slogan {
+    display: flex;
+    flex-direction: column;
+    span {
+      font-family: "os-ebold";
+      &:first-child {
+        height: 22px;
+      }
+      &:last-child {
+        font-size: 12px;
+        font-family: "os-reg";
+      }
+    }
   }
 }
 

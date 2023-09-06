@@ -171,7 +171,7 @@ export class ThreadComponent implements OnInit, OnDestroy {
 
   getUserProfile(message: Message) {
     let user = this.users.find(user => user.userId === message.creatorId);
-    return user?.profilePicture != '' ? user?.profilePicture : '/../../assets/img/profile.png';
+    return user?.profilePicture != '' ? user?.profilePicture : '/assets/img/profile.png';
   }
 
 

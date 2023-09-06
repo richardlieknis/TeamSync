@@ -1,4 +1,3 @@
-import { User } from './../../../models/user.class';
 import { Injectable } from '@angular/core';
 import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import {
@@ -7,6 +6,7 @@ import {
   getDocs, onSnapshot, query, setDoc, updateDoc, where
 } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
+import { User } from 'src/models/user.class';
 
 @Injectable({
   providedIn: 'root'

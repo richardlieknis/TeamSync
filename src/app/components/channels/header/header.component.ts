@@ -27,7 +27,7 @@ export class HeaderComponent {
 
   getUserProfileAlt(index: number, channel: Channel) {
     let user = this.users.find(user => user.userId === channel.members[index]);
-    return user?.profilePicture != '' ? user?.profilePicture : '/../../assets/img/profile.png';
+    return user?.profilePicture != '' ? user?.profilePicture : '/assets/img/profile.png';
   }
 
 

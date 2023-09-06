@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FileUpload } from '../../../../models/file-upload.class';
 import { UploadService } from 'src/app/shared/services/upload.service';
 import { User } from 'src/models/user.class';
 import { UserService } from 'src/app/shared/services/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { getAuth } from '@angular/fire/auth';
+import { FileUpload } from 'src/models/file-upload.class';
 
 
 @Component({

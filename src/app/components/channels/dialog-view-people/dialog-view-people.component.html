@@ -10,7 +10,7 @@
         <div *ngFor="let user of users; let i = index">
             <mat-card *ngIf="activeChannel.members.includes(user.userId)">
                 <div class="align-center">
-                    <img src="{{ user.profilePicture || '/../../assets/img/profile.png' }}" alt="user profile picture">
+                    <img src="{{ user.profilePicture || '/assets/img/profile.png' }}" alt="user profile picture">
                     {{ user.displayName }}
                 </div>
                 <div class="center blue" (click)="removeUserFromChannel(user.userId)">
