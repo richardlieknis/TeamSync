@@ -1,4 +1,3 @@
 # SlackCloneAngular
-## This is work in progress...
-
-Come back later for updates :)
+The work is in progress...
+Come back later for updates =)
