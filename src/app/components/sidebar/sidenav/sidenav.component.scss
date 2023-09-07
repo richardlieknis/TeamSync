@@ -21,8 +21,8 @@
   margin-left: 8px;
 
   img {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     animation: spin 8s infinite;
   }
   .name-slogan {
@@ -119,7 +119,7 @@ h4 {
   margin: 0 8px;
   padding: 5px 12px;
   font-size: 16px;
-
+  transition: all 225ms;
   cursor: pointer;
 
   p {
@@ -128,7 +128,6 @@ h4 {
     text-overflow: ellipsis;
     overflow: hidden;
   }
-
   @media (hover: hover) {
     &:hover:not(.activeLink) {
       border-radius: 5px;
@@ -163,6 +162,13 @@ h4 {
 
 .channel {
   gap: 8px;
+  transition: all 225ms;
+  @media (hover: hover) {
+    &:hover:not(.activeLink) {
+      border-radius: 5px;
+      background-color: rgb(35, 33, 39);
+    }
+  }
 }
 
 .channelitem {
@@ -187,6 +193,7 @@ h4 {
   gap: 8px;
   padding: 12px 5px 5px 20px;
   font-size: 16px;
+
 }
 
 .add-item {
