@@ -26,29 +26,12 @@ h4 {
   }
 }
 
-.channel {
-  gap: 8px;
-}
-
 .rotate90 {
   transform: rotate(-90deg);
 }
 
 .user-direct-msg-container {
   margin-top: 20px;
-}
-
-.channelitem {
-  margin: 0 8px;
-  padding: 5px 12px;
-  cursor: pointer;
-
-  @media (hover: hover) {
-    &:hover:not(.activeLink) {
-      border-radius: 5px;
-      background-color: rgb(35, 33, 39);
-    }
-  }
 }
 
 .add-item {
@@ -83,8 +66,9 @@ h4 {
 .user-direct-msg {
   gap: 8px;
   font-size: 14px;
+  transition: all 225ms;
   cursor: pointer;
-
+  overflow: hidden;
   @media (hover: hover) {
     &:hover:not(.activeLink) {
       border-radius: 5px;
@@ -104,5 +88,21 @@ h4 {
     padding: 0px 4px;
     border: 1px solid #555;
     border-radius: 4px;
+  }
+}
+
+.slideDown {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  animation: slideDown 225ms normal forwards ease-in-out ;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }

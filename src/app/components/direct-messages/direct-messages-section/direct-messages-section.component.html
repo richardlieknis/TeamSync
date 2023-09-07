@@ -6,7 +6,7 @@
     <span>Direct Messages</span>
   </div>
 
-  <div *ngIf="!collapsed">
+  <div *ngIf="!collapsed" class="slideDown">
     <div *ngFor="let chat of chatService.allChats$ | async"  (click)="toggleSidenav()">
 
       <div *ngIf="chat['members'].includes(this.currentUserId)">
@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="channelitem channel flex-ac" [routerLink]="'create-chat'">
+    <div class="user-direct-msg flex-ac" [routerLink]="'create-chat'">
       <mat-icon class="add-item" fontIcon="add"></mat-icon>
       <p>Create new chat</p>
     </div>
