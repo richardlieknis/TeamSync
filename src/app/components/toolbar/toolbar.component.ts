@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { DialogHelpComponent } from '../dialogs/dialog-help/dialog-help.component';
 import { DialogLegalComponent } from '../dialogs/dialog-legal/dialog-legal.component';
 import { SearchService } from 'src/app/shared/services/search.service';
+import { sidenavComponent } from '../sidebar/sidenav/sidenav.component';
+import { MatDrawer } from '@angular/material/sidenav';
 
 
 
@@ -17,9 +19,10 @@ import { SearchService } from 'src/app/shared/services/search.service';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnDestroy, OnInit {
+  @Output() drawer = new EventEmitter<boolean>();
 
   sidenavOpen: boolean = true;
   userProfileOpen: boolean = false;
@@ -35,7 +38,7 @@ export class ToolbarComponent implements OnDestroy, OnInit {
     public searchService: SearchService,
     private authService: AuthService,
     private userService: UserService,
-    private auth: AngularFireAuth,
+    private auth: AngularFireAuth
   ) {}
 
 
@@ -51,6 +54,12 @@ export class ToolbarComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
   }
+
+  toggleDrawer() {
+    this.sidenavOpen = !this.sidenavOpen;
+    this.drawer.emit(this.sidenavOpen);
+  }
+  
 
 
   getLoggedInUser() {
