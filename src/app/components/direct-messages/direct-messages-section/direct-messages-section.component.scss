@@ -91,18 +91,20 @@ h4 {
   }
 }
 
-.slideDown {
+.slideIn {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  animation: slideDown 225ms normal forwards ease-in-out ;
+  animation: slideIn 225ms normal forwards ease-in-out ;
 }
 
-@keyframes slideDown {
+@keyframes slideIn {
   0% {
+    opacity: 0;
     transform: translateX(-100%);
   }
   100% {
+    opacity: 1;
     transform: translateX(0%);
   }
 }

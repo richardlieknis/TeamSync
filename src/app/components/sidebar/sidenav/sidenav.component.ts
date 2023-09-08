@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DialogAddChannelComponent } from '../../dialogs/dialog-add-channel/dialog-add-channel.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Channel } from 'src/models/channel.class';
@@ -6,6 +6,7 @@ import { ChannelService } from 'src/app/shared/services/channel.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { Observable, Subscription } from 'rxjs';
+import { MatDrawer } from '@angular/material/sidenav';
 
 
 @Component({
@@ -14,7 +15,6 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./sidenav.component.scss']
 })
 export class sidenavComponent implements OnInit, OnDestroy {
-
   channelsCollapsed = false;
   messagesCollapsed = false;
 
@@ -79,10 +79,10 @@ export class sidenavComponent implements OnInit, OnDestroy {
     // ggf noch den aktuellen User als Member hinzufügen
     this.channel = new Channel();
     this.channel.name = dialogData;
-    this.channel.creatorId = await this.auth.currentUser.then((user) => user?.uid ||'');
+    this.channel.creatorId = await this.auth.currentUser.then((user) => user?.uid || '');
     this.channel.members.push(this.channel.creatorId);
     this.channelService.setChannel(this.channel);
-   
+
   }
 
 

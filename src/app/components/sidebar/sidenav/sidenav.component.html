@@ -1,5 +1,4 @@
-<mat-drawer-container [ngClass]="{'hidden-sidenav': !sidenavOpen}">
-  <mat-drawer mode="side" opened>
+
     <div class="server-name">
       <div class="logo">
         <img src="/assets/img/logo.png" />
@@ -31,7 +30,7 @@
           <p>Channels</p>
         </div>
 
-        <div *ngIf="!channelsCollapsed" class="channel-dropdown-menu">
+        <div *ngIf="!channelsCollapsed" class="channel-dropdown-menu slideIn">
 
           <div *ngFor="let channel of allChannels$ | async" class="flex-ac channel" [routerLink]="'channel/' + channel.channelId" (click)="toggleSidenav()" routerLinkActive="active-link">
             <mat-icon>numbers</mat-icon>
@@ -48,5 +47,3 @@
       <app-direct-messages-section></app-direct-messages-section>
 
     </div>
-  </mat-drawer>
-</mat-drawer-container>

@@ -287,3 +287,21 @@ h4 {
     border-radius: 5px;
   }
 }
+
+.slideIn {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  animation: slideIn 225ms normal forwards ease-in-out ;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
