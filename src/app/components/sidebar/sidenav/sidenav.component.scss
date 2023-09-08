@@ -79,7 +79,7 @@
   position: sticky;
   top: 0;
   padding: 8px 10px;
-  height: 61px;
+  height: 64px;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(87, 87, 87);
   background-color: var(--bg-color-side-nav);
@@ -98,7 +98,6 @@ h4 {
 }
 
 .nav-scroll-container {
-  height: calc(100% - 61px);
   overflow-y: auto;
 }
 

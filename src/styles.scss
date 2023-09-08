@@ -1,23 +1,5 @@
 // @import "~quill/dist/quill.snow.css";
 @import '~quill/dist/quill.snow.css';
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  color: #fafbf7;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-
 @font-face {
   font-family: "os-ebold";
   src: url(../src/assets/fonts/OpenSans-ExtraBold.ttf);
@@ -37,6 +19,27 @@ body {
   font-family: "os-sbold";
   src: url(../src/assets/fonts/OpenSans-SemiBold.ttf);
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #E91E63 #303030;
+}
+
+a {
+  color: #b61b52;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'os-reg', Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+
 
 .ql-snow .ql-editor img {
   width: 90px !important;
@@ -67,11 +70,6 @@ body {
 
 img {
   max-width: 300px;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #E91E63 #303030;
 }
 
 /* Chrome, Edge and Safari */

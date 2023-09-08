@@ -1,10 +1,15 @@
 .mat-toolbar-row, .mat-toolbar-single-row {
   justify-content: space-between;
+  height: 61px !important;
 
   .toolbar-logo-container {
     display: flex;
     align-items: center;
   }
+}
+
+mat-toolbar {
+  height: 61px !important;
 }
 
 .profile-icon {
@@ -25,7 +30,7 @@
   padding-top: 8px;
 }
 
-.option-1-background {
+.option-3-background {
   background: repeating-linear-gradient(
     180deg,
     #0f0f0f,
@@ -47,12 +52,8 @@
   color: white;
 }
 
-.option-3-background {
-  background: linear-gradient(
-    90deg,
-    rgba(100,37,136,1) 21%,
-    rgba(23,4,91,1) 100%,
-    rgba(23,4,91,1) 100%
-  );
+.option-1-background {
+  background: #424242;
   color: white;
+  border-bottom: 1px solid rgb(87, 87, 87);
 }
