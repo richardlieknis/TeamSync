@@ -185,6 +185,9 @@ export class ChannelService {
    * @returns threads as QuerySnapshot.
    */
   async getThreads(threadIds: string[]) {
+    if (threadIds.length <= 0) {
+      return getDocs(query(this.threadRef)); //TODO: This is a workaround for a firestore error that occurs when a channel is created and no thread is created with it.
+    }
     const q = query(this.threadRef, where('threadId', 'in', threadIds));
     await this.getMessages((await getDocs(q)).docs.map(doc => doc.data() as Thread).map(thread => thread.messages).flat());
     return getDocs(q);

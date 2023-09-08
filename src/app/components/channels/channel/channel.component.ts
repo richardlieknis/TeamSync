@@ -14,8 +14,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 
 // Rxjs & Quill
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill/public-api';
-import 'quill-emoji/dist/quill-emoji.js';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
+import 'quill-emoji/dist/quill-emoji.js';
 
 
 
@@ -79,7 +79,6 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    console.log('ChannelComponent initialized');
     this.paramsSub = this.route.params.subscribe(params => {
       this.activeChannelId = params['id'];
       this.channelService.refreshChannelData(this.activeChannelId, 'channelIsAsking');
@@ -91,7 +90,6 @@ export class ChannelComponent implements OnInit, OnDestroy {
    * To avoid memory leaks, unsubscribe from all subscriptions on destruction of the component.
    */
   ngOnDestroy(): void {
-    console.log('ChannelComponent destroyed');
     this.paramsSub.unsubscribe();
   }
 
@@ -118,7 +116,6 @@ export class ChannelComponent implements OnInit, OnDestroy {
     if (this.collectedContent != null && this.collectedContent != '') {
       let now = new Date().getTime() / 1000;
       let channel = (await this.channelService.getChannel(this.activeChannelId)).data() as Channel;
-      console.log("Channel ist:", channel);
       let message = new Message({ messageId: '', creatorId: this.loggedUser(), creationDate: new Timestamp(now, 0), text: this.collectedContent });
       await this.channelService.setMessage(message, channel);
       var element = document.getElementsByClassName("ql-editor");
