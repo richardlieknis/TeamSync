@@ -108,12 +108,6 @@ export class ToolbarComponent implements OnDestroy, OnInit {
     this.sidenavService.openUserProfile.emit(!this.userProfileOpen);
   }
 
-
-  toggleSidenav() {
-    this.sidenavService.openSidenav.emit(!this.sidenavOpen);
-  }
-
-
   logoutUser() {
     this.channelService.unsubscribeChannel(); // Unsubscribe form Change-Listener to prevent memory leaks.
     this.channelService.unsubscribeThread(); // Unsubscribe form Change-Listener to prevent memory leaks.

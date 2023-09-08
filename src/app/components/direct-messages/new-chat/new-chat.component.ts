@@ -74,7 +74,7 @@ export class NewChatComponent implements OnDestroy {
     this.userSub2 = this.userService.get(userId).pipe(take(1)).subscribe(data => {
       if (this.addedUsers.length < 5) {
         this.filterDuplicates(data);
-      } else this.snackBar.open("Limit of chat members reached. (max 5)", "OK", {
+      } else this.snackBar.open("Limit of chat members reached. (max 4)", "OK", {
         duration: 5000,
       })
     })
@@ -108,9 +108,8 @@ export class NewChatComponent implements OnDestroy {
    * @param users added Users as Object
    */
   async createNewChat() {
-    console.log(this.addedUsers)
     const userExists = await this.checkCurrentUserChats();
-    if (this.addedUsers.length >= 1) {
+    if (this.addedUsers.length > 1) {
       const chatId = this.generateRandomId();
       if (userExists === true){
         this.chatService.updateUserChatData(chatId);
