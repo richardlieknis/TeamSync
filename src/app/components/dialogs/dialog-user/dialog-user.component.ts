@@ -22,6 +22,8 @@ export class DialogUserComponent implements OnInit, OnDestroy {
   user!: User;
   userDialogOpen = false;
   imgUrl: string = '';
+  userIsGuest = false;
+  guestId = 'f18QgDdgbwTH9IsbjUtvtTZcK753'; // id from firestore authentification
 
   // Subscriptions
   userSub!: Subscription;
@@ -55,6 +57,7 @@ export class DialogUserComponent implements OnInit, OnDestroy {
   getLoggedInUser() {
     this.userSub = this.auth.user.subscribe((user: any) => {
       user ? this.userId = user.uid : null;
+      this.checkIfUserIsGuest(user);
     });
     this.allUsersSub = this.userService.allUsers$.subscribe((users) => {
       let user = users.find((user) => user.userId === this.userId);
@@ -89,6 +92,11 @@ export class DialogUserComponent implements OnInit, OnDestroy {
     dialog.componentInstance.userId = this.userId;
   }
 
+  checkIfUserIsGuest(user: any) {
+    if (user.uid === this.guestId) {
+      this.userIsGuest = true;
+    }
+  }
 
   /**
    * Closes Dialog with profile information.
@@ -97,3 +105,5 @@ export class DialogUserComponent implements OnInit, OnDestroy {
     this.sidenavService.openUserProfile.emit(false);
   }
 }
+
+
