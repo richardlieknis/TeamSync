@@ -1,5 +1,7 @@
 <div class="sticky-header" *ngIf="channel && users">
-    # {{ channel.name }}
+    <div class="channel-name">
+        # {{ channel.name }}
+    </div>
 
     <div *ngIf="getMembers(channel).length == 1" class="hover" (click)="openViewPeopleDialog()">
         <img class="mini-profile" src="{{ getUserProfileAlt(0, channel) }}" alt="small profile picture">

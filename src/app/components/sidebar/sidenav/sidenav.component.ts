@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostListener, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { DialogAddChannelComponent } from '../../dialogs/dialog-add-channel/dialog-add-channel.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Channel } from 'src/models/channel.class';
@@ -7,14 +7,17 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { SidenavService } from 'src/app/shared/services/sidenav.service';
 import { Observable, Subscription } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
 
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
+  providers: [DashboardComponent]
 })
 export class sidenavComponent implements OnInit {
+  @Output() drawer = new EventEmitter<boolean>();
   channelsCollapsed = false;
   messagesCollapsed = false;
 
@@ -32,12 +35,18 @@ export class sidenavComponent implements OnInit {
     public auth: AngularFireAuth,
     private channelService: ChannelService,
     public sidenavService: SidenavService,
+    public dashboardComponent: DashboardComponent,
   ) { }
 
 
   ngOnInit(): void {
     this.loadChannels();
     this.handleSidenavVisibility();
+  }
+
+  toggleDrawer() {
+    this.sidenavOpen = !this.sidenavOpen;
+    this.drawer.emit(this.sidenavOpen);
   }
 
 

@@ -59,10 +59,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.sidenavService.openSidenav.subscribe((response) => {
-      this.leftSidenavOpen = response;
-    });
-    // Change Listeners must be loaded after Login otherwise no permission to query the database.
     this.channelService.startListening();
     this.userService.startListening();
   }

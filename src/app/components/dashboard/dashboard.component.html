@@ -1,6 +1,6 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer #drawer [opened]="true">
-    <app-sidenav></app-sidenav>
+    <app-sidenav (drawer)="toggleDrawer($event)"></app-sidenav>
   </mat-drawer>
 
   <app-toolbar (drawer)="toggleDrawer($event)"></app-toolbar>
