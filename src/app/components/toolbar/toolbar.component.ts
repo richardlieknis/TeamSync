@@ -43,10 +43,6 @@ export class ToolbarComponent implements OnDestroy, OnInit {
 
 
   ngOnInit(): void {
-    this.sidenavService.openSidenav.subscribe((response) => {
-      this.sidenavOpen = response;
-    });
-
     this.getLoggedInUser();
   }
 
