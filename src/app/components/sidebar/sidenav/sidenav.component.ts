@@ -14,7 +14,7 @@ import { MatDrawer } from '@angular/material/sidenav';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class sidenavComponent implements OnInit, OnDestroy {
+export class sidenavComponent implements OnInit {
   channelsCollapsed = false;
   messagesCollapsed = false;
 
@@ -36,14 +36,8 @@ export class sidenavComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    console.log('SidenavComponent initialized');
     this.loadChannels();
     this.handleSidenavVisibility();
-  }
-
-
-  ngOnDestroy(): void {
-    console.log('SidenavComponent destroyed');
   }
 
 

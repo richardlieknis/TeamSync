@@ -45,7 +45,6 @@ export class UserService {
    * @param change as any.
    */
   private addNewUser(change: any) {
-    // console.log("New user: ", change);
     this.allUsers$.pipe(map(users => {
       return [...users, new User(change)];
     }));
@@ -56,7 +55,6 @@ export class UserService {
    * @param change as any.
    */
   private modifyUser(change: any) {
-    console.log("Modified user: ", change);
     this.allUsers$.pipe(map(users => {
       return users.map(user => {
         if (user.userId === change.userId) {
@@ -72,7 +70,6 @@ export class UserService {
    * @param change as any.
    */
   private removeUser(change: any) {
-    console.log("Removed user: ", change);
     this.allUsers$.pipe(map(users => {
       return users.filter(user => user.userId !== change.userId);
     }));

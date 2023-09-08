@@ -75,8 +75,6 @@ export class AuthService {
       }
       return isLoggedIn;
     });
-
-    console.log("IST EINGELOGGT: ", isLoggedIn);
   }
 
   /**

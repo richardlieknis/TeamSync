@@ -46,7 +46,6 @@ export class ChannelService {
       snapshot.docChanges().forEach((change) => {
         change.type === "added" ? this.addNewChannel(change.doc.data()) : null;
         change.type === "modified" ? this.modifyChannel(change.doc.data()) : null;
-        change.type === "removed" ? this.removeChannel(change.doc.data()) : null;
       });
     });
     this.unsubscribeThread = onSnapshot(this.qThread, (snapshot: { docChanges: () => any[]; }) => {
@@ -61,7 +60,6 @@ export class ChannelService {
    * @param change as any.
    */
   private async addNewChannel(change: any) {
-    // console.log("New channel: ", change);
     this.channelId === change.channelId ? await this.refreshChannelData(change.channelId, 'channelServiceIsAksing') : null;
     this.allChannels$.pipe(map(channels => {
       return [...channels, new Channel(change)]
@@ -73,7 +71,6 @@ export class ChannelService {
    * @param change as any.
    */
   private async modifyChannel(change: any) {
-    console.log("Modified channel: ", change);
     this.channelId === change.channelId ? await this.refreshChannelData(change.channelId, 'channelServiceIsAksing') : null;
     this.allChannels$.pipe(map(channels => {
       return channels.map(channel => {
@@ -85,18 +82,7 @@ export class ChannelService {
     }));
   }
 
-  /**
-   * Removes a channel from the allChannels$ Observable.
-   * @param change as any.
-   */
-  private removeChannel(change: any) {
-    console.log("Removed channel: ", change);
-    // Wriite code to remove channel from allChannels$ Observable.
-  }
-
-
   private async modifyThread(change: any) {
-    console.log("Modified thread: ", change);
     this.getMessagesForThread(change.messages);
   }
 
@@ -113,13 +99,11 @@ export class ChannelService {
    * @param channelName as string.
    */
   async setChannel(channel: Channel) {
-    console.log('channel: ', channel);
     const docRef = doc(this.channelRef);
 
     channel.channelId = docRef.id;
 
     setDoc(docRef, channel.toJSON()).then(() => {
-      console.log('Document written with ID: ', docRef.id);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     }
@@ -132,7 +116,6 @@ export class ChannelService {
    * @param whoIsAsking as string (either Channel or ChannelService.
    */
   async refreshChannelData(channelId: string, whoIsAsking: string) {
-    console.log('refreshChannelData: ', channelId, whoIsAsking);
     if (this.isChannelAskingForNewChannel(channelId, whoIsAsking)) {
       this.refreshNewChannel(channelId);
     } else if (this.isChannelAskingForLocalStorage(channelId, whoIsAsking)) {
@@ -243,7 +226,6 @@ export class ChannelService {
     message.messageId = docRef.id;
 
     setDoc(docRef, message.toJSON()).then(() => {
-      console.log('Message written with ID: ', docRef.id);
       channel ? this.setThread(new Thread({ messages: [message.messageId], creationDate: Timestamp.now() }), channel) : null; // If the message is created inside a channel, create a thread for it
       thread ? this.addMessageToThread(message.messageId, thread) : null; // If the message is created inside a thread, add it to the thread
     }).catch((error) => {
@@ -257,7 +239,6 @@ export class ChannelService {
     thread.threadId = docRef.id;
 
     setDoc(docRef, thread.toJSON()).then(() => {
-      console.log('Thread written with ID: ', docRef.id);
       channel ? this.addThreadToChannel(thread.threadId, channel) : null; // If the thread is created inside a channel, add it to the channel
     }).catch((error) => {
       console.error('Error adding document: ', error);
@@ -268,7 +249,6 @@ export class ChannelService {
   async addMessageToThread(messageId: string, thread: Thread) {
     const docRef = doc(this.firestore, 'threads/' + thread.threadId);
     setDoc(docRef, { messages: [...thread.messages, messageId] }, { merge: true }).then(() => {
-      console.log('Message added to Thread: ', thread.threadId);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });
@@ -278,7 +258,6 @@ export class ChannelService {
   async addThreadToChannel(threadId: string, channel: Channel) {
     const docRef = doc(this.firestore, 'channels/' + channel.channelId);
     setDoc(docRef, { threads: [...channel.threads, threadId] }, { merge: true }).then(() => {
-      console.log('Thread added to Channel: ', channel.name);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });
@@ -289,7 +268,6 @@ export class ChannelService {
     const docRef = doc(this.firestore, 'channels/' + channel.channelId);
 
     setDoc(docRef, channel, { merge: true }).then(() => {
-      console.log('Channel updated: ', channel.name);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });

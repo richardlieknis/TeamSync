@@ -1,7 +1,6 @@
 let existingChannels = ['1234567890'];
 
 function refreshChannelData(channelId: string, whoIsAsking: string) {
-    console.log('refreshChannelData: ', channelId, whoIsAsking);
     if (isChannelAskingForNewChannel(channelId, whoIsAsking)) {
         refreshNewChannel(channelId);
     } else if (isChannelAskingForLocalStorage(channelId, whoIsAsking)) {

@@ -98,7 +98,6 @@ export class ThreadComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    console.log('ThreadComponent destroyed');
     this.paramsSub.unsubscribe();
     this.userSub.unsubscribe();
     this.searchSub.unsubscribe();
@@ -115,7 +114,6 @@ export class ThreadComponent implements OnInit, OnDestroy {
 
 
   getChannel(channel: Channel) {
-    console.log("Channel: " + channel.name);
     this.channel = channel;
     return channel.name;
   }
@@ -133,7 +131,6 @@ export class ThreadComponent implements OnInit, OnDestroy {
     if (this.collectedContent != null && this.collectedContent != '') {
       let now = new Date().getTime() / 1000;
       let message = new Message({ messageId: '', creatorId: this.loggedUser(), creationDate: new Timestamp(now, 0), text: this.collectedContent });
-      console.log("Adding message: " + message.messageId + " to thread: " + this.threadId)
       await this.channelService.setMessage(message, undefined ,this.thread);
       var element = document.getElementsByClassName("ql-editor");
       element[0].innerHTML = "";

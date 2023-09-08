@@ -77,7 +77,6 @@ export class SidenavThreadsComponent implements OnInit, OnDestroy {
   getUserInfo() {
     this.userService.getSingleUserSnapshot(this.userId).then((onSnapshot) => {
       this.activeUser = onSnapshot.data() as User;
-      // console.log('activeUser fetched:', this.activeUser);
       this.loadMessagesByActiveUser();
     });
   }

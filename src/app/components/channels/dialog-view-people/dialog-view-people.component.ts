@@ -27,7 +27,6 @@ export class DialogViewPeopleComponent {
 
 
   openAddPeopleDialog() {
-    console.log("openAddPeopleDialog");
     const dialogRef = this.dialog.open(DialogAddPeopleComponent, {
       width: '350px',
       data: {

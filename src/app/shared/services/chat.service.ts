@@ -127,10 +127,6 @@ export class ChatService {
     updateDoc(chatDocument, {
       messages: arrayUnion(messageId)
     })
-
-    // setDoc(chatDocument, chat.toJSON()).then(() => {
-    //   console.log("Message added to chat successfully!");
-    // });
   }
 
   extractMembers(users: any) {

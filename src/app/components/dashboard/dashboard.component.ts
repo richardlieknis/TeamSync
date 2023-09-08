@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   updateDrawerMode(windowWidth: any) {
-    console.log(this.drawer);
     if (windowWidth < 950){
       this.drawer.mode = 'over';
       this.drawer.open();
