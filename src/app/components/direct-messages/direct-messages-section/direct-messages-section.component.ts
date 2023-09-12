@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CollectionReference, DocumentData } from '@angular/fire/firestore';
 import { Observable, Subscription, take } from 'rxjs';
 import { ChatService } from 'src/app/shared/services/chat.service';
@@ -13,6 +13,7 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./direct-messages-section.component.scss']
 })
 export class DirectMessagesSectionComponent implements OnInit {
+  @Output() drawer = new EventEmitter<boolean>();
   allUsers: User[] = [];
   allChats: any[] = [];
   collapsed: boolean = false;
@@ -44,6 +45,12 @@ export class DirectMessagesSectionComponent implements OnInit {
     // if (this.userSub != undefined) {
     //   this.userSub.unsubscribe();
     // }
+  }
+
+  toggleMobileDrawer() {
+    if (window.innerWidth < 950) {
+      this.drawer.emit(this.sidenavOpen);
+    }
   }
 
   async getAllUsers() {

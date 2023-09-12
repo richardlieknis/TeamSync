@@ -7,7 +7,7 @@
   </div>
 
   <div *ngIf="!collapsed" class="slideIn">
-    <div *ngFor="let chat of chatService.allChats$ | async"  (click)="toggleSidenav()">
+    <div *ngFor="let chat of chatService.allChats$ | async"  (click)="toggleMobileDrawer()">
 
       <div *ngIf="chat['members'].includes(this.currentUserId)">
         <div class="user-direct-msg flex-ac" [routerLink]="['chat/' + chat['chatId']]" routerLinkActive="activeLink">
@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="user-direct-msg flex-ac" [routerLink]="'create-chat'">
+    <div class="user-direct-msg flex-ac" [routerLink]="'create-chat'" (click)="toggleMobileDrawer()">
       <mat-icon class="add-item" fontIcon="add"></mat-icon>
       <p>Create new chat</p>
     </div>

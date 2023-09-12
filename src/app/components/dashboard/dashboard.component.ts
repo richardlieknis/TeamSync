@@ -11,11 +11,23 @@ import { MatDrawer } from '@angular/material/sidenav';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  previousWidth = 800;
   @ViewChild('drawer') drawer!: MatDrawer;
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: any) {
-    this.updateDrawerMode(event.target.innerWidth);
+    const currentWidth = event.target.innerWidth;
+    const previousWidth = this.previousWidth || currentWidth;
+  
+    // Überprüfen, ob sich die X-Achse geändert hat
+    if (currentWidth !== previousWidth) {
+      // X-Achse hat sich geändert, führen Sie Ihre Aktionen aus
+      this.updateDrawerMode(currentWidth);
+  
+      // Aktualisieren Sie die vorherige Breite
+      this.previousWidth = currentWidth;
+    }
   }
+  
 
   updateDrawerMode(windowWidth: any) {
     if (windowWidth < 950){

@@ -45,8 +45,14 @@ export class sidenavComponent implements OnInit {
   }
 
   toggleDrawer() {
-    this.sidenavOpen = !this.sidenavOpen;
+    // this.sidenavOpen = !this.sidenavOpen;
     this.drawer.emit(this.sidenavOpen);
+  }
+
+  toggleMobileDrawer() {
+    if (window.innerWidth < 950) {
+      this.drawer.emit(this.sidenavOpen);
+    }
   }
 
 
