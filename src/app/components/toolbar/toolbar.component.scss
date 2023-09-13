@@ -2,6 +2,10 @@
   justify-content: space-between;
   height: 61px !important;
 
+  @media screen and (max-width: 950px) {
+    padding: 2px;
+  }
+
   .toolbar-logo-container {
     display: flex;
     align-items: center;

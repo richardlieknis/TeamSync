@@ -10,11 +10,6 @@ import { Subscription } from 'rxjs';
 import { DialogHelpComponent } from '../dialogs/dialog-help/dialog-help.component';
 import { DialogLegalComponent } from '../dialogs/dialog-legal/dialog-legal.component';
 import { SearchService } from 'src/app/shared/services/search.service';
-import { sidenavComponent } from '../sidebar/sidenav/sidenav.component';
-import { MatDrawer } from '@angular/material/sidenav';
-
-
-
 
 @Component({
   selector: 'app-toolbar',
@@ -24,7 +19,6 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class ToolbarComponent implements OnDestroy, OnInit {
   @Output() drawer = new EventEmitter<boolean>();
 
-  sidenavOpen: boolean = true;
   userProfileOpen: boolean = false;
   selectedOption: string = '1'; // Change toolbar-color
   userId: string = '';
@@ -41,22 +35,17 @@ export class ToolbarComponent implements OnDestroy, OnInit {
     private auth: AngularFireAuth
   ) {}
 
-
   ngOnInit(): void {
     this.getLoggedInUser();
   }
-
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
   }
 
   toggleDrawer() {
-    this.sidenavOpen = !this.sidenavOpen;
-    this.drawer.emit(this.sidenavOpen);
+    this.drawer.emit(true);
   }
-  
-
 
   getLoggedInUser() {
     this.userSub = this.auth.user.subscribe((user: any) => {
@@ -64,13 +53,11 @@ export class ToolbarComponent implements OnDestroy, OnInit {
     });
   }
 
-
   getUser() {
     this.userService.getSingleUserSnapshot(this.userId).then((user) => {
       this.user = new User(user.data());
     });
   }
-
 
   /**
    * Transfers the search term to the search service.
@@ -81,7 +68,6 @@ export class ToolbarComponent implements OnDestroy, OnInit {
     this.searchService.setSearchResults(searchResults);
   }
 
-
   openDialogHelp() {
     const dialogRef = this.dialog.open(DialogHelpComponent);
 
@@ -90,7 +76,6 @@ export class ToolbarComponent implements OnDestroy, OnInit {
     });
   }
 
-
   openDialogLegal() {
     const dialogRef = this.dialog.open(DialogLegalComponent);
 
@@ -98,7 +83,6 @@ export class ToolbarComponent implements OnDestroy, OnInit {
 
     });
   }
-
 
   openUserProfile() {
     this.sidenavService.openUserProfile.emit(!this.userProfileOpen);

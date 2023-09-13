@@ -3,7 +3,7 @@
         # {{ channel.name }}
     </div>
 
-    <div *ngIf="getMembers(channel).length == 1" class="hover" (click)="openViewPeopleDialog()">
+    <div *ngIf="getMembers(channel).length == 1" class="align-profiles hover" (click)="openViewPeopleDialog()">
         <img class="mini-profile" src="{{ getUserProfileAlt(0, channel) }}" alt="small profile picture">
     </div>
     <div *ngIf="getMembers(channel).length > 1  && getMembers(channel)!.length < 4" class="align-profiles hover"
@@ -13,9 +13,11 @@
         </div>
     </div>
     <div *ngIf="getMembers(channel).length >= 4" class="align-profiles hover" (click)="openViewPeopleDialog()">
-        <img class="mini-profile" src="{{ getUserProfileAlt(0, channel) }}" alt="small profile picture">
-        <img class="mini-profile" src="{{ getUserProfileAlt(1, channel) }}" alt="small profile picture">
-        <img class="mini-profile" src="{{ getUserProfileAlt(2, channel) }}" alt="small profile picture">
-        <p class="counter">+ {{ channel.members.length - 3}}</p>
+        <div class="profile-container">
+            <img class="mini-profile" src="{{ getUserProfileAlt(0, channel) }}" alt="small profile picture">
+            <img class="mini-profile" src="{{ getUserProfileAlt(1, channel) }}" alt="small profile picture">
+            <img class="mini-profile" src="{{ getUserProfileAlt(2, channel) }}" alt="small profile picture">
+        </div>
+        <div class="counter">+{{ channel.members.length - 3}}</div>
     </div>
 </div>

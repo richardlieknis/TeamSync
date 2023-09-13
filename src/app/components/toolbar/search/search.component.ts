@@ -9,7 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchComponent {
   searchTerm: string = ''; // linked to input
   @Output() searchEvent: EventEmitter<string> = new EventEmitter<string>(); // EventEmitter requires Output
-
+  placeholder: string = 'react';
 
   /**
    * The search-Function is triggered when the user types in the search input field.
