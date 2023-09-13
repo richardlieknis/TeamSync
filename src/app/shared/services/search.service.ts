@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { collection } from '@firebase/firestore';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -7,6 +9,13 @@ import { Subject } from 'rxjs';
 export class SearchService {
   private searchResults: string[] = [];
   searchResultsChanged: Subject<string[]> = new Subject<string[]>();
+  channelColl: any;
+
+  constructor(
+    private fs: Firestore
+  ) { 
+    this.channelColl = collection(this.fs, 'channels');
+  }
 
 
   /**
@@ -25,4 +34,12 @@ export class SearchService {
   getSearchResults(): string[] {
     return this.searchResults;
   }
+
+  //NOTE - not in use
+  async getChannelName(channelId: string) {
+    const docRef = doc(this.channelColl, channelId);
+    const docSnap = await getDoc(docRef);
+    const data = docSnap.data();
+    return data?['name']: 'this Channel';
+  };
 }

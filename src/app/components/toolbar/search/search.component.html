@@ -14,7 +14,7 @@
       (input)="search()"
       aria-label="Search"
       autocomplete="off"
-      placeholder="Search in #{{placeholder}}"
+      [placeholder]="getPlaceholder()"
     />
   </div>
   <div class="icon-field">
