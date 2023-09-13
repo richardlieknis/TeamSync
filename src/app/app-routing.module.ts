@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'channel/:id', component: ChannelComponent, canActivate: [AuthGuard] },
-      { path: 'channel-threads', component: SidenavThreadsComponent, canActivate: [AuthGuard] },
-      { path: 'channel-users', component: SidenavUsersComponent, canActivate: [AuthGuard] },
+      { path: 'threads', component: SidenavThreadsComponent, canActivate: [AuthGuard] },
+      { path: 'users', component: SidenavUsersComponent, canActivate: [AuthGuard] },
       { path: 'user/:id', component: DialogUserComponent, canActivate: [AuthGuard] },
       { path: 'chat/:id', component: DirectMessageChannelComponent, canActivate: [AuthGuard] },
       { path: 'create-chat', component: NewChatComponent, canActivate: [AuthGuard] },
