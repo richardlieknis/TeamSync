@@ -16,7 +16,7 @@ import { SidenavUsersComponent } from './components/sidebar/sidenav-users/sidena
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent,
+  { path: '', component: DashboardComponent,
     children: [
       { path: 'channel/:id', component: ChannelComponent, canActivate: [AuthGuard] },
       { path: 'threads', component: SidenavThreadsComponent, canActivate: [AuthGuard] },

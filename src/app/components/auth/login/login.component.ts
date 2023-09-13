@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.form.value.password
     ).subscribe({
       next: () => {
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['threads'])
       },
       error: error => {
         this.snackBar.open(error.message, "OK", {
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       'qwertz123'
     ).subscribe({
       next: () => {
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['threads'])
       },
       error: error => {
         this.snackBar.open(error.message, "OK", {

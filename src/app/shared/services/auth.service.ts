@@ -56,7 +56,7 @@ export class AuthService {
   signInWithGoogle() {
     signInWithPopup(this.auth, this.provider).then(() => {
       this.userService.setNewUser(this.auth.currentUser?.uid!, this.auth.currentUser?.email!);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['threads']);
     });
   }
 

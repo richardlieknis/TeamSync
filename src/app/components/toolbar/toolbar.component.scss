@@ -16,6 +16,22 @@ mat-toolbar {
   height: 61px !important;
 }
 
+.right-corner {
+  display: flex;
+  button {
+    display: flex;
+    .grn-dot {
+      background-color: #0f0;
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      border-radius: 50%;
+    }
+  }
+}
+
 .profile-icon {
   width: 25px;
   height: 25px;
