@@ -113,11 +113,11 @@ export class NewChatComponent implements OnDestroy {
       const chatId = this.generateRandomId();
       if (userExists === true){
         this.chatService.updateUserChatData(chatId);
-        this.router.navigate(['dashboard/chat/' + chatId]);
+        this.router.navigate(['chat/' + chatId]);
       } else this.chatService.setUserChatData(chatId);
       this.chatService.setChatData(chatId, this.addedUsers);
       this.chatService.setOtherUserChatData(chatId, this.addedUsers);
-      this.router.navigate(['dashboard/chat/' + chatId]);
+      this.router.navigate(['chat/' + chatId]);
     } else this.snackBar.open("Add atleast one member to chat", "OK", {
       duration: 5000,
     });

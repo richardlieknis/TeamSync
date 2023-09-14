@@ -124,7 +124,7 @@ export class SidenavThreadsComponent implements OnInit, OnDestroy {
 
 
   openThread(thread: Thread) {
-    return `/dashboard/thread/${thread.threadId}`;
+    return `/thread/${thread.threadId}`;
   }
 
 }

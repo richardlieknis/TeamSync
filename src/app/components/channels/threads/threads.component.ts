@@ -62,6 +62,6 @@ export class ThreadsComponent {
 
 
   openThread(thread: Thread) {
-    return `/dashboard/thread/${thread.threadId}`;
+    return `/thread/${thread.threadId}`;
   }
 }

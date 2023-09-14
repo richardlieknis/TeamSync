@@ -102,6 +102,9 @@ h4 {
 }
 
 .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   div:first-of-type {
     margin-top: 8px;
   }
@@ -130,7 +133,7 @@ h4 {
   @media (hover: hover) {
     &:hover:not(.activeLink) {
       border-radius: 5px;
-      background-color: rgb(35, 33, 39);
+      background-color: rgb(52, 52, 52);
     }
   }
 }
@@ -165,7 +168,7 @@ h4 {
   @media (hover: hover) {
     &:hover:not(.activeLink) {
       border-radius: 5px;
-      background-color: rgb(35, 33, 39);
+      background-color: rgb(52, 52, 52);
     }
   }
 }
@@ -180,7 +183,7 @@ h4 {
   @media (hover: hover) {
     &:hover:not(.activeLink) {
       border-radius: 5px;
-      background-color: rgb(35, 33, 39);
+      background-color: rgb(52, 52, 52);
     }
   }
   p {
@@ -238,7 +241,7 @@ h4 {
   @media (hover: hover) {
     &:hover:not(.activeLink) {
       border-radius: 5px;
-      background-color: rgb(35, 33, 39);
+      background-color: rgb(52, 52, 52);
     }
   }
 }
@@ -264,26 +267,6 @@ h4 {
 
   p {
     margin: 0 !important;
-  }
-}
-
-.user-direct-msg {
-  gap: 8px;
-  font-size: 14px;
-  cursor: pointer;
-
-  @media (hover: hover) {
-    &:hover:not(.activeLink) {
-      border-radius: 5px;
-      background-color: rgb(35, 33, 39);
-    }
-  }
-
-  img {
-    height: 24px;
-    width: 24px;
-    object-fit: cover;
-    border-radius: 5px;
   }
 }
 

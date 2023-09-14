@@ -30,7 +30,7 @@ export class SearchComponent {
 
   getPlaceholder(): string {
     const currentRoute = this.route.url;
-    const routeName = currentRoute.split('/')[2];
+    const routeName = currentRoute.split('/')[1];
     return `Search in #${routeName}`;
   }
 
