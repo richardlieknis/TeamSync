@@ -201,6 +201,15 @@ export class ChannelService {
     return getDocs(q);
   }
 
+  async getAllMsgs() {
+    const allMsgs: any = [];
+    const qSnap = await getDocs(this.messageRef);
+    qSnap.forEach((doc) => {
+      allMsgs.push(doc.data());
+    });
+    return allMsgs;
+  }
+
 
   getThread(threadId: string) {
     const docRef = doc(this.threadRef, threadId);

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ChannelService } from 'src/app/shared/services/channel.service';
 import { SearchService } from 'src/app/shared/services/search.service';
 import { Channel } from 'src/models/channel.class';
+import { Message } from 'src/models/message.class';
 import { Thread } from 'src/models/thread.class';
 import { User } from 'src/models/user.class';
 
@@ -15,6 +16,7 @@ export class ThreadsComponent {
 
   @Input() channel!: Channel;
   @Input() users!: User[];
+  allMsgs: Message[] = [];
 
   // Subscriptions
   searchSub!: Subscription;
@@ -24,11 +26,12 @@ export class ThreadsComponent {
 
   constructor(
     public channelService: ChannelService,
-    private searchService: SearchService
+    private searchService: SearchService,
   ) {}
 
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.allMsgs = await this.channelService.getAllMsgs();
     this.handleSearchbar();
   }
 
@@ -58,6 +61,32 @@ export class ThreadsComponent {
       }
     }
     return 'Unknown';
+  }
+
+  setReplyUserImg(msgId: string) {
+    const msgCreator = this.getMsgCreator(msgId);
+    const userImage = this.getUserImage(msgCreator[0]);
+    return userImage;
+  }
+
+  getUserImage(userId: string) {
+    let userImage: string[] = [];
+    this.users.forEach(user => {
+      if (user.userId === userId) {
+        userImage.push(user.profilePicture);
+      }
+    });
+    return userImage;
+  }
+
+  getMsgCreator(msgId: string) { //TODO: show users images in thread
+    let msgCreator: string[] = [];
+    this.allMsgs.forEach(msg => {
+      if (msg.messageId === msgId) {
+        msgCreator.push(msg.creatorId);
+      };
+    });
+    return msgCreator;
   }
 
 

@@ -8,13 +8,20 @@
                 <div *ngIf="thread.messages[0] === message.messageId">
 
 
-                    <mat-card matTooltip="Show thread" matTooltipPosition="below" class="thread" [routerLink]="openThread(thread)" *ngIf="searchResults.length === 0
+                    <mat-card matTooltip="Show thread" matTooltipPosition="below" class="thread" [routerLink]="openThread(thread)" *ngIf="searchResults?.length === 0
                     || message.text.toLowerCase().includes(searchResults[0].toLowerCase())
                     || getUserName(message.creatorId)?.toLowerCase()!.includes(searchResults[0].toLowerCase())">
 
                         <app-messages [message]="message" [users]="users"></app-messages>
-                        <p *ngIf="thread.messages.length > 1" class="message-content-replies">
-                        {{ thread.messages.length - 1 }} {{ thread.messages.length === 2 ? 'reply' : 'replies' }}</p>
+                        <div *ngIf="thread.messages.length > 1" class="message-replies-container">
+                            <div class="replies">
+                                <div *ngFor="let creator of thread.messages; let first = first">
+                                    <ng-container *ngIf="!first">
+                                        <img class="reply-userimg" src="{{setReplyUserImg(creator)}}">
+                                    </ng-container>
+                                </div>
+                                {{ thread.messages.length - 1 }} {{ thread.messages.length === 2 ? 'reply' : 'replies' }}</div>
+                            </div>
                         
                     </mat-card>
 
