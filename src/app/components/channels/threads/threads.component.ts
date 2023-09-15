@@ -79,7 +79,12 @@ export class ThreadsComponent {
     return userImage;
   }
 
-  getMsgCreator(msgId: string) { //TODO: show users images in thread
+  /**
+   * Get pre saved message by message id.
+   * @param msgId message id as string.
+   * @returns id of the message creator as string.
+   */
+  getMsgCreator(msgId: string) {
     let msgCreator: string[] = [];
     this.allMsgs.forEach(msg => {
       if (msg.messageId === msgId) {
